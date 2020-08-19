@@ -1,40 +1,38 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { ListContext } from "../Context/listContext";
 //This will get list from listContext
 const Item = ({ task, id, done, itemTest }) => {
   const [list, setList] = useContext(ListContext);
-  const [mark, setMark] = useState(isDone);
+  const [mark, setMark] = useState("");
   const [test, setTest] = useState(done);
 
-  const isDone=()=>{
+  useEffect(()=>{
     if(done){
-     return { textDecorationLine: "none", color: "black" }
-    }else{
-      return{ textDecorationLine: "line-through", color: "grey" }
-    }
-  }
-
+      setMark({textDecorationLine: "line-through", color: "grey"})  
+      }else{
+        setMark({ textDecorationLine: "none", color: "black" })
+      }
+  },[])
+  
   const deleteTask = (e) => {
     let idDelete = id;
     setList(list.filter((item) => item.id !== idDelete));
   };
   //Test using loop
-  const testLoop=()=>{
-    setList((prevTask)=>[prevTask.map(el=>el.id===id?{...el, done:!done}:el)])}
+  /* const testLoop=()=>{
+    setList((prevTask)=>[prevTask.map(el=>el.id===id?{...el, done:!done}:el)])} */
   
   const markTask = () => {
     if (!done) {
     //  setMark({ textDecorationLine: "line-through", color: "grey" });
     //  deleteTask()
-    //  setList((prevTask) => [...prevTask, { task: task, id: id, done: true }]);
-      testLoop()
+      setList((prevTask) => [...prevTask, { task: task, id: id, done: true }]);
      // setTest(true);
     } else {
      // setMark({ textDecorationLine: "none", color: "black" });
-    //  deleteTask()
-     // setList((prevTask) => [...prevTask, { task: task, id: id, done: false }]);
-     testLoop()
+     // deleteTask()
+      setList((prevTask) => [...prevTask, { task: task, id: id, done: false }]);
      // setTest(false);
     }
   };
@@ -45,7 +43,7 @@ const Item = ({ task, id, done, itemTest }) => {
       </TouchableOpacity>
       <View style={styles.textContainer}>
         <Text style={mark}>
-          {task} {console.log(itemTest.done+" "+id)}
+          {task} {console.log(itemTest.done+" "+{mark})}
         </Text>
       </View>
       <TouchableOpacity style={styles.button} index={id} onPress={deleteTask}>
