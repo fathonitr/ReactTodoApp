@@ -19,19 +19,22 @@ const Item = ({ task, id, done, itemTest }) => {
     let idDelete = id;
     setList(list.filter((item) => item.id !== idDelete));
   };
+  //Test using loop
+  const testLoop=()=>{
+    setList((prevTask)=>[prevTask.map(el=>el.id===id?{...el, done:!done}:el)])}
   
   const markTask = () => {
     if (!done) {
     //  setMark({ textDecorationLine: "line-through", color: "grey" });
     //  deleteTask()
-      setList((prevTask) => [...prevTask, { task: task, id: id, done: true }]);
-      
+    //  setList((prevTask) => [...prevTask, { task: task, id: id, done: true }]);
+      testLoop()
      // setTest(true);
     } else {
      // setMark({ textDecorationLine: "none", color: "black" });
     //  deleteTask()
-      setList((prevTask) => [...prevTask, { task: task, id: id, done: false }]);
-      
+     // setList((prevTask) => [...prevTask, { task: task, id: id, done: false }]);
+     testLoop()
      // setTest(false);
     }
   };
