@@ -16,12 +16,12 @@ const Input = () => {
 
   const addTask = () => {
     if (task !== "") {
-      setList((prevTask) => [...prevTask, { task: task, id: countId, done: false }]); //...prevTask, it copy all the object in lists, and re adding it with the new one
-      const testObject={name:"john", id:1, done:true}
+      setList((prevTask) => [...prevTask, {id: countId, task: task, done: false }]); //...prevTask, it copy all the object in lists, and re adding it with the new one
+    //  const testObject={name:"john", id:1, done:true}
       //addToStorage(testObject)
       setTask("");
       setCounter(countId + 1);
-      console.log(countId);
+     // console.log(countId);
     }
   };
   return (
