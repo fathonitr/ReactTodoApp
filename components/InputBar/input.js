@@ -26,16 +26,16 @@ const Input = () => {
   };
   return (
     <View style={styles.containerInput}>
-      <TouchableOpacity style={styles.buttonContainer} onPress={addTask}>
-        <Image source={addBtn} style={styles.button}></Image>
-      </TouchableOpacity>
-      <TextInput
+      {/* <TextInput
         style={styles.inputText}
         onChangeText={(text) => setTask(text)}
         onSubmitEditing={addTask}
         placeholder="What's the task?"
         value={task}
-      />
+      /> */}
+      <TouchableOpacity style={styles.buttonContainer} onPress={addTask}>
+        <Image source={addBtn} style={styles.button}></Image>
+      </TouchableOpacity>
     </View>
   );
 };

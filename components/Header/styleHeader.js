@@ -3,7 +3,7 @@ import {StyleSheet, Dimensions} from 'react-native'
 
 const styles=StyleSheet.create({
     headera: {
-        flex: 2,
+        flex: 3,
         backgroundColor: "blue",
       },
     backgroundImg:{
@@ -14,10 +14,16 @@ const styles=StyleSheet.create({
         backgroundColor:"rgba(0,0,0,0.3)",
     },
     test1:{
-        flex:1
+        flex:1,
+        alignItems:"center",
+        justifyContent:"center"
+    },
+    font:{
+        fontSize:30
     },
     test2:{
-        flex:1
+        alignItems:"flex-end",
+        justifyContent:"center"
     }
 })
 export default styles
